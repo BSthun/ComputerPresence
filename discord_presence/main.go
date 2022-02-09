@@ -28,7 +28,7 @@ func main() {
 		panic(err)
 	}
 
-	utils.SetInterval(update, 2*time.Second)
+	utils.SetInterval(update, 3*time.Second)
 
 	scan, err := fmt.Scanln()
 	if err != nil {

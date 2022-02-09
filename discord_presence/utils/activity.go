@@ -8,9 +8,10 @@ import (
 )
 
 var stage = types.BatchStageA
+var batchNo = 0
+var music = "N/A"
 
 func SetActivity(stat string, sys string, image string, window string) {
-	var detail string
 
 	// TODO: Make status flippable
 	// if stage == types.BatchStageA {
@@ -20,11 +21,14 @@ func SetActivity(stat string, sys string, image string, window string) {
 	// }
 	// stage.Toggle()
 
-	detail = stats.GetMusic()
-	
+	if batchNo%5 == 0 {
+		music = stats.GetMusic()
+	}
+	batchNo++
+
 	err := client.SetActivity(client.Activity{
 		State:      stat,
-		Details:    detail,
+		Details:    music,
 		LargeImage: image,
 		LargeText:  window,
 		SmallImage: "macos_bigsur",
